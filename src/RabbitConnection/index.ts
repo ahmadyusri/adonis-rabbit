@@ -11,7 +11,7 @@ export default class RabbitConnection {
   /**
    * The connection
    */
-  private $connection: Connection
+  private $connection?: Connection
 
   /**
    * The credentials
@@ -106,6 +106,12 @@ export default class RabbitConnection {
     if (!this.$connection) {
       try {
         this.$connection = await connect(this.url)
+
+        this.$connection.on('close', () => {
+          this.$connection = undefined
+          this.hasConnection = false
+        })
+        this.hasConnection = true
       } catch (error) {
         throw error
       }
@@ -118,8 +124,12 @@ export default class RabbitConnection {
    * Closes the connection
    */
   public async closeConnection() {
-    if (this.hasConnection) {
-      await this.$connection.close()
+    if (this.$connection) {
+      try {
+        await this.$connection.close()
+      } catch (error) {}
+
+      this.$connection = undefined
       this.hasConnection = false
     }
   }

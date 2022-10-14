@@ -52,7 +52,10 @@ export default class RabbitManager implements RabbitManagerContract {
    * Returns the channel
    */
   public async getChannel() {
-    const connection = await this.rabbitConnection.getConnection()
+    const connection = await this.getConnection()
+    connection.on('close', () => {
+      this.closeChannel()
+    })
 
     if (!this.hasChannel) {
       this.hasChannel = true
@@ -185,8 +188,10 @@ export default class RabbitManager implements RabbitManagerContract {
    */
   public async closeChannel() {
     if (this.hasChannel) {
-      await this.$channel.close()
       this.hasChannel = false
+      try {
+        await this.$channel.close()
+      } catch (error) {}
     }
   }
 
