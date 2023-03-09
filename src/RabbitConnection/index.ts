@@ -28,6 +28,11 @@ export default class RabbitConnection {
    */
   private $protocol: string
 
+  /**
+   * The Virtual Host
+   */
+  private $vhost: string
+
   constructor(private readonly rabbitConfig: RabbitConfig) {
     this.$credentials = this.handleCredentials(
       this.rabbitConfig.user,
@@ -39,6 +44,7 @@ export default class RabbitConnection {
       this.rabbitConfig.port
     )
     this.$protocol = this.handleProtocol(this.rabbitConfig.protocol)
+    this.$vhost = this.handleVHost(this.rabbitConfig.vhost)
   }
 
   /**
@@ -93,10 +99,25 @@ export default class RabbitConnection {
   }
 
   /**
+   * Custom vhost
+   *
+   * @param vhost
+   */
+  private handleVHost(vhost: RabbitConfig['vhost']) {
+    if (!vhost || vhost === '/') {
+      vhost = ''
+    } else {
+      vhost = `/${vhost}`
+    }
+
+    return vhost
+  }
+
+  /**
    * Returns the connection URL
    */
   public get url() {
-    return `${this.$protocol}${this.$credentials}${this.$hostname}`
+    return `${this.$protocol}${this.$credentials}${this.$hostname}${this.$vhost}`
   }
 
   /**

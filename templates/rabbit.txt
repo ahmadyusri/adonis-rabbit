@@ -11,6 +11,8 @@ const rabbitConfig: RabbitConfig = {
   port: Number(Env.get('RABBITMQ_PORT')),
   
   protocol: Env.get('RABBITMQ_PROTOCOL'),
+
+  vhost: Env.get('RABBITMQ_VHOST') as string,
 }
 
 export default rabbitConfig

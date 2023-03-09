@@ -47,7 +47,8 @@
       "RABBITMQ_USER": "",
       "RABBITMQ_PASSWORD": "",
       "RABBITMQ_PORT": "",
-      "RABIITMQ_PROTOCOL": "ampq://"
+      "RABBITMQ_PROTOCOL": "ampq://",
+      "RABBITMQ_VHOST": ""
     },
     "types": "adonis-rabbit",
     "providers": [

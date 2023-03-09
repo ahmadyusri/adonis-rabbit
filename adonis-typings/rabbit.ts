@@ -196,6 +196,11 @@ declare module '@ioc:Adonis/Addons/Rabbit' {
      * The RabbitMQ protocol
      */
     protocol?: string
+
+    /**
+     * The RabbitMQ vhost
+     */
+    vhost?: string
   }
 
   const Rabbit: RabbitManagerContract
