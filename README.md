@@ -1,5 +1,7 @@
 # adonis-rabbit
 
+> RabbitMQ provider Fork from [adonis-rabbit](https://www.npmjs.com/package/adonis-rabbit)
+
 `adonis-rabbit` is a RabbitMQ provider for [Adonis](https://github.com/adonisjs/core).
 
 ## Getting Started
@@ -7,13 +9,13 @@
 Instal `adonis-rabbit`:
 
 ```
-yarn add adonis-rabbit
+yarn add @ahmadyusri/adonis-rabbit
 ```
 
 Then:
 
 ```
-node ace invoke adonis-rabbit
+node ace invoke @ahmadyusri/adonis-rabbit
 ```
 
 This will create `config/rabbit.ts` and add the following fields to your `.env`:
@@ -23,7 +25,7 @@ RABBITMQ_HOSTNAME=
 RABBITMQ_USER=
 RABBOTMQ_PASSWORD=
 RABBITMQ_PORT=
-RABBITMQ_PROTOCOL= "amqp://" //or ampqs 
+RABBITMQ_PROTOCOL= "amqp://" //or ampqs
 ```
 
 Make sure to set the correct values to the enviroment variables so `adonis-rabbit` can connect.
@@ -231,7 +233,7 @@ Closes the connection.
 
 ### Message
 
-When consuming messages through [`consumeFrom`](https://github.com/jotaajunior/adonis-rabbit#consumefrom), you'll receive in the callback a Message instance.
+When consuming messages through [`consumeFrom`](https://github.com/ahmadyusri/adonis-rabbit#consumefrom), you'll receive in the callback a Message instance.
 
 This slightly different from amqplib approach. For example:
 

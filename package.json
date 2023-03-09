@@ -1,7 +1,7 @@
 {
   "name": "@ahmadyusri/adonis-rabbit",
-  "description": "AdonisJS RabbitMQ provider",
-  "version": "0.1.4",
+  "description": "AdonisJS RabbitMQ provider Fork from https://www.npmjs.com/package/adonis-rabbit",
+  "version": "0.1.6",
   "author": "Jota Júnior <jjunior@protonmail.ch>",
   "types": "build/adonis-typings/index.d.ts",
   "main": "build/providers/RabbitProvider.js",
